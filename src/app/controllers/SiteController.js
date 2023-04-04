@@ -1,13 +1,14 @@
+// const mongoose = require('mongoose');
+const Course = require('../models/Course');
 class SiteController {
-
-    index(req, res) {
-        res.render('home');
+    async index(req, res) {
+        const allCourses = await Course.find();
+        res.status(200).json(allCourses);
     }
 
     search(req, res) {
         res.render('search');
     }
-
 }
 
-module.exports = new SiteController;
+module.exports = new SiteController();
